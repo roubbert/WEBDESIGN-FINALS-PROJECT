@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | SSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        :root {
+            --bg-light-gray: #f4f7fa;   
+            --card-gray: #ffffff;
+            --sss-blue: #003366;        
+            --sss-dark-blue: #002244;   
+            --text-dark: #222222;
+            --text-light: #ffffff;
+            --border-muted: #d0dbe5;    
+        }
+
+        body {
+            background-color: #e4ecf2; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px 0;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .wireframe-container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0, 34, 68, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .section-padding {
+            padding: 40px 40px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff; 
+            padding: 15px 40px;
+            border-bottom: 4px solid var(--sss-blue); 
+        }
+
+        .nav-item {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--sss-blue); 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item.left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px; 
+            line-height: 1.3;
+            max-width: 360px;
+            color: var(--sss-blue); 
+            font-weight: 800;
+        }
+
+        .sss-logo {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .nav-item.center {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .nav-link {
+            color: var(--sss-blue);
+            text-decoration: none;
+            margin: 0 6px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .wireframe-search {
+            font-size: 13px;
+            font-weight: normal;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            border: 1px solid var(--border-muted);
+            padding: 8px 14px;
+            border-radius: 4px;
+            width: 200px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .page-header {
+            background-color: var(--bg-light-gray);
+            border-bottom: 1px solid var(--border-muted);
+            padding: 45px 40px;
+        }
+
+        .page-header h1 {
+            font-size: 28px;
+            color: var(--sss-blue);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .page-breadcrumbs {
+            font-size: 13px;
+            color: #555555;
+            font-weight: 500;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--bg-light-gray);
+            border: 1px solid var(--border-muted);
+            border-top: 4px solid var(--sss-blue);
+            border-radius: 4px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 51, 102, 0.08);
+            border-color: var(--sss-blue);
+        }
+
+        .service-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--sss-blue);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .service-desc {
+            font-size: 14px;
+            color: #444444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-btn {
+            background-color: #ffffff;
+            color: var(--sss-blue);
+            border: 1px solid var(--sss-blue);
+            padding: 10px 15px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .service-card:hover .service-btn {
+            background-color: var(--sss-blue);
+            color: var(--text-light);
+        }
+
+        /* Footer Section */
+        .contact-section {
+            background-color: var(--sss-blue); 
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .contact-section h2 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .social-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            aspect-ratio: 1 / 1;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .social-box:hover {
+            transform: translateY(-3px);
+            background-color: #ffffff;
+            color: var(--sss-blue);
+            border-color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .nav-item.left {
+                max-width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+            .nav-item.center {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .social-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wireframe-container">
+        <header class="navbar">
+            <div class="nav-item left">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Social_Security_System_%28SSS%29.svg" alt="SSS Logo" class="sss-logo">
+                <div>Republic of the Philippines<br>Social Security System</div>
+            </div>
+            <div class="nav-item center">
+                <a href="web-finals-home.html" class="nav-link">HOME</a>
+                <a href="web-finals-about.html" class="nav-link">ABOUT</a>
+                <a href="web-finals-service.html" class="nav-link">SERVICES</a>
+                <span class="nav-link" style="cursor: default;">MEMBERS</span>
+                <span class="nav-link" style="cursor: default;">PORTAL</span>
+            </div>
+            <div class="search-container">
+                <input type="text" class="wireframe-search" placeholder="Search website...">
+            </div>
+        </header>
+
+        <section class="page-header">
+            <h1>Our Services</h1>
+            <div class="page-breadcrumbs">Home &gt; Services</div>
+        </section>
+
+        <main class="section-padding">
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <div>
+                        <h2 class="service-title">Registration & Coverage</h2>
+                        <p class="service-desc">Register as a new member, update your existing record, or register your employees under the compulsory coverage framework.</p>
+                    </div>
+                    <button class="service-btn">Access Service</button>
+                </div>
+
+                <div class="service-card">
+                    <div>
+                        <h2 class="service-title">Contribution Remittance</h2>
+                        <p class="service-desc">Generate your Payment Reference Number (PRN), calculate contribution rates, and manage secure electronic remittance channels.</p>
+                    </div>
+                    <button class="service-btn">Access Service</button>
+                </div>
+
+                <div class="service-card">
+                    <div>
+                        <h2 class="service-title">Short-Term Loans</h2>
+                        <p class="service-desc">Apply online for Salary Loans, Calamity Loans, or Pension Loans with streamlined requirements and flexible repayment terms.</p>
+                    </div>
+                    <button class="service-btn">Access Service</button>
+                </div>
+
+                <div class="service-card">
+                    <div>
+                        <h2 class="service-title">Benefits Claims</h2>
+                        <p class="service-desc">Process and track claims for Sickness, Maternity, Disability, Retirement, Death, Funeral, and Unemployment benefits.</p>
+                    </div>
+                    <button class="service-btn">Access Service</button>
+                </div>
+
+            </div>
+        </main>
+
+        <section class="contact-section section-padding">
+            <h2>Connect with us on Social Media</h2>
+            <div class="social-grid">
+                <div class="social-box">Facebook</div>
+                <div class="social-box">Gmail</div>
+                <div class="social-box">Twitter / X</div>
+                <div class="social-box">Instagram</div>
+                <div class="social-box">LinkedIn</div>
+                <div class="social-box">YouTube</div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
